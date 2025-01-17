@@ -45,7 +45,7 @@ jobs:
           aws-region: us-east-2
 
       - name: Configurar o kubectl
-        run: aws eks upudate-kubeconfig --name aula-k8s
+        run: aws eks update-kubeconfig --name aula-k8s
 
       - name: Aplicar os maniestos no kubernetes
         uses: Azure/k8s-deploy@v5
