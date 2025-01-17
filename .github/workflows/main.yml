@@ -11,18 +11,21 @@ jobs:
       - name: Obter o código do projeto
         uses: actions/checkout@v4
 
-
       - name: Autenticar no Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-
-      - name: Construção da Imagem Docker
-        run: echo "Executando o comando dockere build"
-      - name: Envio da Imagem Docker
-        run: echo "Executando o comando dockere push"
+      - name: Construção da iamgem e push docker
+        uses: docker/build-push-action@v6
+        with:
+          context: ./src
+          push: true
+          file: ./src/Dockerfile
+          tags: |
+            yanpaiva/fake-shop:latest
+            yanpaiva/fake-shop:v${{ github.run_number }}
   cd:
     runs-on: ubuntu-latest
     needs: [ci]
