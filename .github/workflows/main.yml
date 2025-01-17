@@ -53,7 +53,7 @@ jobs:
           manifests: |
             ./k8s/deployment.yaml
           images: |
-              yanpaiva/fake-shop:v&{{ github.run_number }}
+            yanpaiva/fake-shop:v&{{ github.run_number }}
 
 
         
